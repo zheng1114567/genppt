@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GenPPT — 一句话生成可编辑 PPT</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>GenPPT</h1>
+    <p class="subtitle">一句话输入，多 Agent 协作生成专业可编辑 PPT</p>
+  </header>
+
+  <main class="main">
+    <section class="input-panel">
+      <div class="card">
+        <label class="label" for="topic">PPT 主题</label>
+        <input id="topic" type="text" class="input" placeholder="例如：新能源汽车售后服务体验提升方案" autofocus>
+        <label class="label" for="requirements">补充要求（可选）</label>
+        <textarea id="requirements" class="textarea" rows="2" placeholder="例如：10页，面向投资人，风格专业克制，需要数据图表和动画"></textarea>
+        <div class="actions">
+          <button id="generate-btn" class="btn primary">开始生成</button>
+          <label class="checkbox-label">
+            <input type="checkbox" id="enable-assets">
+            搜索在线素材
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="progress-panel" id="progress-panel" style="display:none">
+      <div class="card">
+        <h2 class="section-title">生成进度</h2>
+        <div class="agent-list" id="agent-list"></div>
+
+        <!-- Human-in-the-loop intervention -->
+        <div id="human-intervention" style="display:none" class="intervention-panel">
+          <div class="intervention-header">
+            <span class="intervention-icon">🛑</span>
+            <div>
+              <strong>需要您的决策</strong>
+              <p id="intervention-summary"></p>
+            </div>
+          </div>
+          <div id="intervention-issues" class="intervention-issues"></div>
+          <div class="intervention-actions" id="intervention-actions" style="display:none">
+            <button class="btn primary intervention-btn" data-action="accept">接受当前版本</button>
+            <button class="btn secondary intervention-btn" data-action="reject">放弃重新生成</button>
+            <span id="intervention-waiting" class="waiting-hint">等待您的决定…</span>
+          </div>
+        </div>
+
+        <div id="download-area" style="display:none" class="download-area">
+          <a id="download-link" class="btn success" href="#">下载 PPTX</a>
+          <button id="view-content-btn" class="btn secondary">查看内容稿</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-preview" id="content-preview" style="display:none">
+      <div class="card">
+        <h2 class="section-title">内容稿预览</h2>
+        <pre id="content-md" class="content-md"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="status-text" class="status idle">就绪</span>
+  </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

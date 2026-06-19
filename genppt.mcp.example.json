@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "ppt-mcp-powerpoint": {
+      "command": "uvx",
+      "args": ["ppt-mcp"],
+      "env": {},
+      "role": "manual_refine",
+      "autoPostprocess": false
+    },
+    "unsplash-search": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-unsplash"],
+      "env": {},
+      "role": "asset_search",
+      "autoPostprocess": false
+    },
+    "web-research": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-key"
+      },
+      "role": "research",
+      "autoPostprocess": false
+    }
+  }
+}

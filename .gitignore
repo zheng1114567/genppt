@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Build outputs
+outputs/
+out/
+
+# Node (legacy, being removed)
+node_modules/
+
+# Environment
+.env
+
+# Test
+.pytest_cache/
